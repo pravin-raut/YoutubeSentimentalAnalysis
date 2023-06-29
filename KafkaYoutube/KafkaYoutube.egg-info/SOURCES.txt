@@ -1,8 +1,0 @@
-setup.py
-KafkaClass/Kafka_Connect.py
-KafkaClass/__init__.py
-KafkaYoutube.egg-info/PKG-INFO
-KafkaYoutube.egg-info/SOURCES.txt
-KafkaYoutube.egg-info/dependency_links.txt
-KafkaYoutube.egg-info/requires.txt
-KafkaYoutube.egg-info/top_level.txt

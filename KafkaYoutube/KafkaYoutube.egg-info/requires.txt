@@ -1,4 +1,0 @@
-textblob
-kafka-python
-google-auth
-google-api-python-client
