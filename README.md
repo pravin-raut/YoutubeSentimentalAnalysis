@@ -7,8 +7,12 @@ This project demonstrates how to perform sentiment analysis of YouTube comments 
 2) A Kafka installation to act as the message broker between the YouTube API and Databricks.
 3) A Databricks account to consume the comments from Kafka, perform sentiment analysis, and store the results back in Kafka.
 
+
 ## Architecture
 ![Youtube Sentimental Analysis](https://user-images.githubusercontent.com/65663124/237044334-01b7b4c5-d03b-47e5-93d1-f7062371b674.png)
+
+## Flow
+![mermaid-diagram-2023-08-11-100143](https://github.com/pravin-raut/YoutubeSentimentalAnalysis/assets/65663124/966d53b6-5dbc-44bf-b4db-f5e6302503f7)
 
 ## Preview
 
