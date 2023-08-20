@@ -1,0 +1,46 @@
+%%{
+  init: {
+    'theme': 'neutral',
+    'themeVariables': {
+      'primaryColor': '#254abb',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#254abb',
+      'lineColor': '#F8B229',
+      'secondaryColor': '#006100',
+      'tertiaryColor': '#fff'
+    },
+    'themeCSS': '.messageText, .noteText, .participant, .actor, .boxLabel { font-size: 50px; }'
+  }
+}%%
+
+sequenceDiagram
+    box "User & YouTube API"
+    actor User
+    participant YouTubeAPI as YouTube API
+    end
+    box "Kafka Pipeline"
+    participant KafkaProducer as Kafka Producer
+    participant KafkaBroker as Kafka Broker
+    participant KafkaConsumer as Kafka Consumer
+    end
+    box "Analysis & Storage"
+    participant SentimentAnalyzer as Sentiment Analyzer
+    participant Display
+    end
+
+    User->>YouTubeAPI: Fetch YouTube Comments
+    note over User,YouTubeAPI: 1
+    YouTubeAPI-->>User: Return Comments
+    note over User,YouTubeAPI: 2
+    User->>KafkaProducer: Send Comments to Kafka
+    note over User,KafkaProducer: 3
+    KafkaProducer->>KafkaBroker: Publish Comments to Topic
+    note over KafkaProducer,KafkaBroker: 4
+    KafkaBroker->>KafkaConsumer: Consume Comments from Topic
+    note over KafkaBroker,KafkaConsumer: 5
+    KafkaConsumer->>SentimentAnalyzer: Analyze Comment Sentiment
+    note over KafkaConsumer,SentimentAnalyzer: 6
+    SentimentAnalyzer->>Display: Store Sentiment Analysis Results
+    note over SentimentAnalyzer,Display: 7
+    Display-->>User: Display Sentiment Analysis Results
+    note over Display,User: 8
